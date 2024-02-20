@@ -1,4 +1,4 @@
-RIBBITR_Secrets_Location,/the_location_of_your_secrets
-ribbitr_log_directory,/location_of_ribbitr_logs_not_in_git_folder
-SPIRES_log_director,/location_of_SPIRES_logs_not_in_git_folder
-directory_of_h5_files,/location_of_your_local_h5_files
+RIBBITR_Secrets_Location,/Users/canonmallory/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/UCSB/Briggs Lab/Ribbitr_Cred/Unsafe_Credentials_hecc.rtf
+ribbitr_log_directory,/Users/canonmallory/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/UCSB/Briggs Lab/Local_Log_directories/RIBBITR_log_directory
+SPIRES_log_director,/Users/canonmallory/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/UCSB/Briggs Lab/Local_Log_directories/SPIReS_Melt_Calcs_Log
+directory_of_h5_files,/Users/canonmallory/Library/Mobile Documents/com~apple~CloudDocs/Documents/Local_Only.nosync/School/Briggs Lab/Thaw_Rate_Data/ed_bair_SPIReS-MODIS-ParBAL_2001-2021
