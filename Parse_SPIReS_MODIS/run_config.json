@@ -1,0 +1,41 @@
+{
+  "header": "This file contains the required configuration settings to run the thaw scripts",
+  "researcher name": "Cannon Mallory",
+  "snow_melt_files": {
+    "file_type": "h5",
+    "file_paths": [
+      {
+        "year": "2019",
+        "path": "/Users/Cannon/Documents/School/UCSB/Briggs Lab/Thaw_Rate_Hypothesis/Raw Snow Melt Data (Bair et. Al) /reconstruction_WUS_2019.h5"
+      },
+      {
+        "year": "2020",
+        "path": "/Users/Cannon/Documents/School/UCSB/Briggs Lab/Thaw_Rate_Hypothesis/Raw Snow Melt Data (Bair et. Al) /reconstruction_WUS_2020.h5"
+      },
+      {
+        "year": "2021",
+        "path": "/Users/Cannon/Documents/School/UCSB/Briggs Lab/Thaw_Rate_Hypothesis/Raw Snow Melt Data (Bair et. Al) /reconstruction_WUS_2021.h5"
+      }
+    ]
+  },
+  "ponds": [
+    {
+      "site_id": 10206,
+      "pond_name": "",
+      "region_name": "Barrett",
+      "status": "Declining",
+      "lat": 37.07095335,
+      "lon": -118.5436752,
+      "altitude": 11115.48592
+    },
+    {
+      "site_id": 10090,
+      "pond_name": "",
+      "region_name": "Wanda",
+      "status": "Declining",
+      "lat": 37.12119112,
+      "lon": -118.6924364,
+      "altitude": 11427.16572
+    }
+  ]
+}

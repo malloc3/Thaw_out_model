@@ -1,0 +1,4 @@
+RIBBITR_Secrets_Location,/the_location_of_your_secrets
+ribbitr_log_directory,/location_of_ribbitr_logs_not_in_git_folder
+SPIRES_log_director,/location_of_SPIRES_logs_not_in_git_folder
+directory_of_h5_files,/location_of_your_local_h5_files

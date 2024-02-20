@@ -1,0 +1,215 @@
+{
+    "header": "This file contains the required configuration settings to run the thaw scripts",
+    "researcher name": "Cannon Mallory",
+    "snow_melt_files": {
+        "file_type": "h5",
+        "file_paths": [
+            {
+                "year": "YYYY",
+                "path": "H5 FILE PATH"
+            }
+        ]
+    },
+    "ponds": [
+        {
+            "site_name": "Barrett",
+            "status": "Declining",
+            "site_id": "10206",
+            "latitude": "37.07095335",
+            "longitude": "-118.5436752",
+            "Altitude (m)": "3388"
+        },
+        {
+            "site_name": "Wanda",
+            "status": "Declining",
+            "site_id": "10090",
+            "latitude": "37.12119112",
+            "longitude": "-118.6924364",
+            "Altitude (m)": "3483"
+        },
+        {
+            "site_name": "Gallison",
+            "status": "Declining",
+            "site_id": "74281",
+            "latitude": "37.76896208",
+            "longitude": "-119.3172386",
+            "Altitude (m)": "3267"
+        },
+        {
+            "site_name": "Milestone",
+            "status": "Declining",
+            "site_id": "21076",
+            "latitude": "36.65562048",
+            "longitude": "-118.4680366",
+            "Altitude (m)": "3770"
+        },
+        {
+            "site_name": "Milestone",
+            "status": "Declining",
+            "site_id": "20198",
+            "latitude": "36.65120037",
+            "longitude": "-118.4543381",
+            "Altitude (m)": "3590"
+        },
+        {
+            "site_name": "Milestone",
+            "status": "Declining",
+            "site_id": "20199",
+            "latitude": "36.65192432",
+            "longitude": "-118.4563206",
+            "Altitude (m)": "3610"
+        },
+        {
+            "site_name": "Milestone",
+            "status": "Declining",
+            "site_id": "21081",
+            "latitude": "36.65223008",
+            "longitude": "-118.4593246",
+            "Altitude (m)": "3630"
+        },
+        {
+            "site_name": "Gable",
+            "status": "Extirpated",
+            "site_id": "50305",
+            "latitude": "37.3302023",
+            "longitude": "-118.69438",
+            "Altitude (m)": "3169"
+        },
+        {
+            "site_name": "KernPt",
+            "status": "Naive",
+            "site_id": "20169",
+            "latitude": "36.6025544",
+            "longitude": "-118.4459113",
+            "Altitude (m)": "3510"
+        },
+        {
+            "site_name": "Independence",
+            "status": "Naive",
+            "site_id": "50837",
+            "latitude": "36.7634875",
+            "longitude": "-118.35754",
+            "Altitude (m)": "3219"
+        },
+        {
+            "site_name": "Dusy",
+            "status": "Naive",
+            "site_id": "10220",
+            "latitude": "37.11283058",
+            "longitude": "-118.5429044",
+            "Altitude (m)": "3627"
+        },
+        {
+            "site_name": "Center",
+            "status": "Naive",
+            "site_id": "10487",
+            "latitude": "36.72055454",
+            "longitude": "-118.3463269",
+            "Altitude (m)": "3430"
+        },
+        {
+            "site_name": "Forester",
+            "status": "Naive",
+            "site_id": "11009",
+            "latitude": "36.71668072",
+            "longitude": "-118.3690445",
+            "Altitude (m)": "3430"
+        },
+        {
+            "site_name": "Forester",
+            "status": "Naive",
+            "site_id": "11008",
+            "latitude": "36.71478505",
+            "longitude": "-118.3692795",
+            "Altitude (m)": "3435"
+        },
+        {
+            "site_name": "KernPt",
+            "status": "Naive",
+            "site_id": "20170",
+            "latitude": "36.60259784",
+            "longitude": "-118.4408363",
+            "Altitude (m)": "3510"
+        },
+        {
+            "site_name": "Center",
+            "status": "Naive",
+            "site_id": "10490",
+            "latitude": "36.7363904",
+            "longitude": "-118.3599756",
+            "Altitude (m)": "3390"
+        },
+        {
+            "site_name": "Swamp",
+            "status": "Persistent",
+            "site_id": "10593",
+            "latitude": "36.88848403",
+            "longitude": "-118.7250885",
+            "Altitude (m)": "2926"
+        },
+        {
+            "site_name": "Unicorn",
+            "status": "Persistent",
+            "site_id": "72336",
+            "latitude": "37.84219939",
+            "longitude": "-119.3861402",
+            "Altitude (m)": "3066"
+        },
+        {
+            "site_name": "Unicorn",
+            "status": "Persistent",
+            "site_id": "72808",
+            "latitude": "37.84339057",
+            "longitude": "-119.3851673",
+            "Altitude (m)": "3066"
+        },
+        {
+            "site_name": "Hutchings",
+            "status": "Persistent",
+            "site_id": "70284",
+            "latitude": "37.72921163",
+            "longitude": "-119.2993542",
+            "Altitude (m)": "3219"
+        },
+        {
+            "site_name": "Mulkey",
+            "status": "Persistent",
+            "site_id": "50783",
+            "latitude": "36.4089291",
+            "longitude": "-118.1626",
+            "Altitude (m)": "2871"
+        },
+        {
+            "site_name": "Hutchings",
+            "status": "Persistent",
+            "site_id": "70318",
+            "latitude": "37.7209353",
+            "longitude": "-119.307845",
+            "Altitude (m)": "3133"
+        },
+        {
+            "site_name": "McGee",
+            "status": "Persistent",
+            "site_id": "10055",
+            "latitude": "37.15861235",
+            "longitude": "-118.7231686",
+            "Altitude (m)": "3371"
+        },
+        {
+            "site_name": "Mono",
+            "status": "persistent",
+            "site_id": "",
+            "latitude": "37.854166",
+            "longitude": "-119.220472",
+            "Altitude (m)": "3312"
+        },
+        {
+            "site_name": "Conness",
+            "status": "Persistent",
+            "site_id": "72996",
+            "latitude": "37.97071566",
+            "longitude": "-119.3449467",
+            "Altitude (m)": "3176"
+        }
+    ]
+}

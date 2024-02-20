@@ -1,0 +1,20 @@
+{
+  "name": "snow_melt_hypothesis",
+  "version": "1.0.0",
+  "description": 'Reference https://github.com/malloc3/snow_melt_hypothesis for details on this project',
+  "dependencies": {
+    "matlab": {
+      "version": "R2023b Update 2 (23.2.0.02391609)",
+      "toolboxes": {
+        "Bioinformatics Toolbox": "23.2",
+        "Curve Fitting Toolbox": "23.2",
+        "Image Processing Toolbox": "23.2",
+        "Mapping Toolbox": "23.2",
+        "Parallel Computing Toolbox": "23.2",
+        "SimBiology": "23.2",
+        "Statistics and Machine Learning Toolbox": "23.2"
+      },
+      "python": "3.8.12"
+    }
+  }
+}
