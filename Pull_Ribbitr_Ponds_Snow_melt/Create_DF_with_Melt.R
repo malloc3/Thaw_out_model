@@ -7,23 +7,30 @@ library(rstudioapi)
 #--------------------- USER CHANGE VARIABLES ------------------------#
 debug = TRUE #Change to FALSE when performing actual analysis!
 
-secrets_file = "/Users/Cannon/Documents/GitHub_Security_Codes/Is it this one/Lamo_you will never find me/Beep Beep/Ribbitr_Secrets/ribbitr_secrets.csv"
-log_and_reactor_directory = getwd() #Currently set to just be in the R project directory.
-directory_of_h5_files = FALSE #Set to where all H5 Files are stored
+# This may need to be updated for your computer.  But this should find file in the master directory for this git project
+#. Make sure to update the UPDATE_local_directories.csv file with the correct directories
+csv_with_directory_info = read.csv(paste(getwd(), "/../", "UPDATE_local_directories.csv", sep = ""))
+
 melt_types = FALSE
 
 #Currently only recognizes start and end years (not moths/days)
 start_date = FALSE
 end_date = FALSE
+#------------ END USER CHANGEABLE VAIRABLES -------------------------#
+
+
+
+
+#------------ Sets File Paths from UPDATE_local_directories.csv as needed -----#
+secrets_file = csv_with_directory_info[1,2]
+log_and_reactor_directory = csv_with_directory_info[2,2]
+directory_of_h5_files = csv_with_directory_info[4,2] #Set to where all H5 Files are stored
 
 # These can be changed by the user but if you follow the standard file organization
 # then you should leave these alone
 required_info_for_reactor_directory =  paste(log_and_reactor_directory, "/reactor_info_directory", sep = "")
 log_directory = paste(log_and_reactor_directory, "/log_directory", sep = "")
-#------------ END USER CHANGEABLE VAIRABLES -------------------------#
-
-
-
+#------------------------------------------------------------------------------#
 
 
 
@@ -51,7 +58,7 @@ source("f_connect_to_database.R")
 # ------------------------------------Debugging VARS----------------------------#
 debug_start_date = "2003-11-19"
 debug_end_date = "2006-11-19"
-debug_h5_directory = "/Users/Cannon/Documents/School/UCSB/Briggs Lab/Thaw_Rate_Hypothesis/Raw Snow Melt Data (Bair et. Al) "
+debug_h5_directory = directory_of_h5_files
 debug_log_directory = paste(log_and_reactor_directory, "/debug/log_directory", sep = "")
 debug_required_info_for_reactor_directory = paste(log_and_reactor_directory, "/debug/reactor_info_directory", sep = "")
 debug_melt_types = c("swe", "sweHybrid", "melt")
