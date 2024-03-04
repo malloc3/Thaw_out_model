@@ -16,6 +16,7 @@
 #   ribbitr_connection = Connection the connection to the ribbitr database.
 connect_to_database <- function(file_secrets){
   secrets = read.csv(file_secrets) #fetches the secrets
+  print(toString(secrets[3,2]))
   tryCatch({
     print("Connecting to Database...")
     ribbitr_connection <- dbConnect(drv = dbDriver("Postgres"),

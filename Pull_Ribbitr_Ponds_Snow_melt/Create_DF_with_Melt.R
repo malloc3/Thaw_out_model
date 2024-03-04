@@ -4,8 +4,17 @@ library(rstudioapi) # Package that asked for credentials
 library(tcltk)
 library(rstudioapi)
 
+#------------- Add functions ---------------------------------------------------#
+source("f_get_site_melt_info.R")
+source("f_connect_to_database.R")
+# ------------------------------------------------------------------------------#
+
+
+
+
+
 #--------------------- USER CHANGE VARIABLES ------------------------#
-debug = TRUE #Change to FALSE when performing actual analysis!
+debug = FALSE #Change to FALSE when performing actual analysis!
 
 # This may need to be updated for your computer.  But this should find file in the master directory for this git project
 #. Make sure to update the UPDATE_local_directories.csv file with the correct directories
@@ -14,8 +23,8 @@ csv_with_directory_info = read.csv(paste(getwd(), "/../", "UPDATE_local_director
 melt_types = FALSE
 
 #Currently only recognizes start and end years (not moths/days)
-start_date = FALSE
-end_date = FALSE
+start_date = 01/01/2001
+end_date = -1/01/2021
 #------------ END USER CHANGEABLE VAIRABLES -------------------------#
 
 
@@ -43,13 +52,6 @@ if (!require(librarian)){
 librarian::shelf(tidyverse, DBI, RPostgres, dbplyr, kableExtra, tcltk)
 # ------------------------------------------------------------------------------#
 
-
-
-
-#------------- Add functions ---------------------------------------------------#
-source("f_get_site_melt_info.R")
-source("f_connect_to_database.R")
-# ------------------------------------------------------------------------------#
 
 
 
@@ -116,7 +118,7 @@ db_data <- tbl(ribbitr_connection, "location") %>%
 
 # --------------------- Reformatting DATA --------------------------------#
 # Cleans up the data to only look at California sites
-print("Reformatting Data (this may take some time")
+print("Reformatting Data (this may take some time)")
 clean_data <- db_data %>%
   collect() %>% 
   filter(region == "california")
@@ -133,7 +135,6 @@ print("Data Reformatted Successfully")
 
 # Converts melt_types to a dataframe for easy manipulation later
 melt_types = as.data.frame(melt_types)
-
 
 # get the lat long info
 site_lat_lon_df = get_site_lat_lon(sites_of_interest)
