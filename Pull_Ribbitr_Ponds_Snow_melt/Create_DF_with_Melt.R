@@ -20,7 +20,7 @@ debug = FALSE #Change to FALSE when performing actual analysis!
 #. Make sure to update the UPDATE_local_directories.csv file with the correct directories
 csv_with_directory_info = read.csv(paste(getwd(), "/../", "UPDATE_local_directories.csv", sep = ""))
 
-melt_types = FALSE
+melt_types = c("swe", "sweHybrid", "melt") #This is all of them.  Probably best to just retrieve all these data...
 
 #Currently only recognizes start and end years (not moths/days)
 start_date = 01/01/2001

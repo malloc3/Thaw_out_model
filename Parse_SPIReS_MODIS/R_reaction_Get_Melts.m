@@ -8,7 +8,7 @@
 % will just run this how it is!
 
 %Debug variable.   Set to true to use DEBUG files and DEBUG logs
-debug = true;
+debug = false;
 
 
 %Legts get our Local Directories file so we know where everything is
@@ -44,7 +44,8 @@ logs_path = logs_hack_tbl.Logs_path{1,1};
 site_table_master = readtable(logs_path);
 
 %PreAllocate the table for Matlab
-columnNames = [site_table_master.Properties.VariableNames, ["Date", "Sum Melt", "Mean Melt", "Median Melt", "Max Melt", "Min Melt", "Standard Deviation Melt", "Variance Melt"]];
+columnName_arry =  ["Date", "Sum Melt", "Mean Melt", "Median Melt", "Max Melt", "Min Melt", "Standard Deviation Melt", "Variance Melt", "Region_Size_m", "Region_Shape"];
+columnNames = [site_table_master.Properties.VariableNames,columnName_arry];
 %var_types = [varfun(@class, columnNames, 'OutputFormat', 'cell'), ["datetime", 'double']];
 
 nan_string = "Nan";
@@ -65,7 +66,8 @@ uniqueH5paths = unique(site_table_master.FilePaths);
 % use.  This saves time in the loop by pulling from the file ONCE per file
 progress = 0; %For progress bar
 num_h5_files_processed = 1;
-for h5_path_iter = 1:length(uniqueH5paths)
+number_of_h5_files_to_process = length(uniqueH5paths);
+for h5_path_iter = 1:number_of_h5_files_to_process
     h5_path = string(uniqueH5paths(h5_path_iter));
     site_table_h5_split = site_table_master(strcmp(site_table_master.FilePaths, h5_path), :);
     %Determin Unique Melt types requested
@@ -85,8 +87,7 @@ for h5_path_iter = 1:length(uniqueH5paths)
         disp("==============================")
 
         num_rows = size(site_table, 1);
-        warning("CODE IS NOT RUNNING THROUGH ALL LOCATIONS CORRECT THE FOR LOOP NEAR THIS WARNING")
-        for row = 1:2 %num_rows
+        for row = 1:num_rows
             %Progress Bar information
             loop_start_time = datetime('now');
         
@@ -117,10 +118,12 @@ for h5_path_iter = 1:length(uniqueH5paths)
             min_region_melt = reshape(min(melt_grid, [], [1 2]), 1, []);
             std_region_melt = reshape(std(melt_grid, 1, [1 2]), 1, []);
             variance_region_melt = reshape(var(melt_grid, 1, [1 2]), 1, []);
+            region_size_arry = repelem(region_size, length(melt_grid)); %Makes an array of the same length as the others containing the region size
+            region_shape_arry = repelem("square", length(melt_grid)); %Makes an array of the same length as the others containing the region size
             
             
-            melt_table = table(small_dates, sum_region_melt', mean_region_melt', median_region_melt', max_region_melt', min_region_melt', std_region_melt', variance_region_melt', ...
-                'VariableNames', ["Date", "Sum Melt", "Mean Melt", "Median Melt", "Max Melt", "Min Melt", "Standard Deviation Melt", "Variance Melt"]);
+            melt_table = table(small_dates, sum_region_melt', mean_region_melt', median_region_melt', max_region_melt', min_region_melt', std_region_melt', variance_region_melt', region_size_arry', region_shape_arry', ...
+                'VariableNames', columnName_arry);
            
             row_table = site_table(row, :);
             replicated_row_table = repelem(row_table, size(melt_table, 1), 1);
@@ -139,10 +142,10 @@ for h5_path_iter = 1:length(uniqueH5paths)
             fprintf('Progress: [%s] %.2f%%\r', progressBar, percentComplete);
             disp("Estimated Time Remaining: " + string((num_loops - progress) * time_for_loop))
             disp("Loop Time " + string(time_for_loop))
-            disp("Number of h5 Files Processed:" + string(num_h5_files_processed))
+            disp("Number of h5 Files Processed:" + string(num_h5_files_processed) + "/" + string(number_of_h5_files_to_process))
             disp("===============================================================")
         end
-        clearvars -except reactor_save_path melt_log_save_path num_h5_files_processed num_loops all_melt_table num_rows nan_string columnNames logs_path logs_hack_tbl Logs_Hack_Path region_size number_ays year_start_day varloc site_table melt_type row meta_variables site_table_h5_split h5_path h5_path_iter progress number_days numRows uniqueH5paths site_table_master 
+        clearvars -except number_of_h5_files_to_process columnName_arry reactor_save_path melt_log_save_path num_h5_files_processed num_loops all_melt_table num_rows nan_string columnNames logs_path logs_hack_tbl Logs_Hack_Path region_size number_ays year_start_day varloc site_table melt_type row meta_variables site_table_h5_split h5_path h5_path_iter progress number_days numRows uniqueH5paths site_table_master 
     end
     num_h5_files_processed = num_h5_files_processed + 1;
 end
