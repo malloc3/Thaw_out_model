@@ -3,6 +3,8 @@ library(DBI) # Functions needed to interact with the database
 library(rstudioapi) # Package that asked for credentials
 library(tcltk)
 library(rstudioapi)
+library(dplyr)
+library(oce)
 
 #------------- Add functions ---------------------------------------------------#
 source("f_get_site_melt_info.R")
@@ -22,9 +24,9 @@ csv_with_directory_info = read.csv(paste(getwd(), "/../", "UPDATE_local_director
 
 melt_types = c("swe", "sweHybrid", "melt") #This is all of them.  Probably best to just retrieve all these data...
 
-#Currently only recognizes start and end years (not moths/days)
-start_date = 01/01/2001
-end_date = -1/01/2021
+#Currently r only recognizes start and end years (not moths/days)
+start_date = "2001-11-19" 
+end_date = "2004-11-19"
 #------------ END USER CHANGEABLE VAIRABLES -------------------------#
 
 
@@ -58,7 +60,7 @@ librarian::shelf(tidyverse, DBI, RPostgres, dbplyr, kableExtra, tcltk)
 
 
 # ------------------------------------Debugging VARS----------------------------#
-debug_start_date = "2003-11-19"
+debug_start_date = "2002-11-19"
 debug_end_date = "2006-11-19"
 debug_h5_directory = directory_of_h5_files
 debug_log_directory = paste(log_and_reactor_directory, "/debug/log_directory", sep = "")
@@ -125,7 +127,9 @@ clean_data <- db_data %>%
 
 #Select the sites in California that are of interest.  For now its all sites
 sites_of_interest = clean_data %>% 
-  distinct(site_id)
+  select(site_id, utm_zone, utme, utmn) %>%
+  distinct()
+
 print("Data Reformatted Successfully")
 # ------------------------------------------------------------------------------#
 
@@ -139,11 +143,14 @@ melt_types = as.data.frame(melt_types)
 # get the lat long info
 site_lat_lon_df = get_site_lat_lon(sites_of_interest)
 
+
 list_years = get_years_included_in_target_dates(star_end_dates) #converts given start/end dates to years only
 
 check_directory_for_valid_dates(directory_of_h5_files, list_years) # Checks that we have data for years given
 
 h5_file_path_DF = get_h5_file_names_df(directory_of_h5_files, list_years) # Fetches the full file paths of the target years
+
+
 
 daily_melt = get_daily_site_melt(site_lat_lon_df, h5_file_path_DF,
                                  required_info_for_reactor_directory,
@@ -151,5 +158,3 @@ daily_melt = get_daily_site_melt(site_lat_lon_df, h5_file_path_DF,
 
 
 print("Success!!")
-
-

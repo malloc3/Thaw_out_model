@@ -67,6 +67,9 @@ uniqueH5paths = unique(site_table_master.FilePaths);
 progress = 0; %For progress bar
 num_h5_files_processed = 1;
 number_of_h5_files_to_process = length(uniqueH5paths);
+disp("The number of H5 Files to process");
+disp(number_of_h5_files_to_process);
+disp(uniqueH5paths);
 for h5_path_iter = 1:number_of_h5_files_to_process
     h5_path = string(uniqueH5paths(h5_path_iter));
     site_table_h5_split = site_table_master(strcmp(site_table_master.FilePaths, h5_path), :);

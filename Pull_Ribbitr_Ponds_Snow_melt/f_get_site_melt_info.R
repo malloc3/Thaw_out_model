@@ -120,14 +120,17 @@ create_run_parameters <- function(run_id, h5_file_paths_csv_filepath, site_locat
 get_h5_file_names_df = function(h5_directory, list_years){
   # Get a list of file paths
   file_paths <- list.files(h5_directory, full.names = TRUE)
-  file_paths = file_paths[grep(".h5", file_paths)]
+  file_paths = file_paths[grep(".h5", file_paths)]  #gets all the ones with ".h5" in it
   
   # Initialize an empty data frame
   result_df <- data.frame(Year = character(), FilePaths = character(), stringsAsFactors = FALSE)
   
   # Iterate over substrings and file paths
   for (year in list_years) {
-    matching_files <- file_paths[grep(year, file_paths)]
+    #matching_files <- file_paths[grep(year, file_paths)]
+    #This should check just the last 26 characters of the file path.  This makes it so it ignores the file path itself
+    matching_files <- file_paths[grep(year, substr(file_paths, nchar(file_paths) - 26, nchar(file_paths)))]
+    
     temp_df <- data.frame(Year = year, FilePaths = matching_files, stringsAsFactors = FALSE)
     result_df <- rbind(result_df, temp_df)
   }
@@ -159,9 +162,10 @@ ask_for_target_dates <- function(){
 #- Output -------------------------------------------------------------------#
 #- location_df = DataFrame [site_id, lat, lon]
 get_site_lat_lon <- function(sites_of_interest){
-  sites_of_interest$lat <- runif(1, 32.5, 42)   # Restricted to California
-  sites_of_interest$lon <- runif(1, -124.4096, -114.1312) # Restricted to California
-  return(data.frame(sites_of_interest))
+  lat_lon_list = utm2lonlat(sites_of_interest$utme, sites_of_interest$utmn, zone = sites_of_interest$utm_zone, hemisphere = "N", km = FALSE)
+  sites_of_interest$lat = lat_lon_list$latitude
+  sites_of_interest$lon = lat_lon_list$longitude
+  return(sites_of_interest)
 }
 
 #- Checks the directory that the user gave and ensures that there is an -----#
